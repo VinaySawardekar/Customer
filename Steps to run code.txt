@@ -1,0 +1,6 @@
+Run the Uvicorn server in command prompt and see the application output
+> Open Command Prompt
+> Run pip install -r requirements.txt 
+> Go the 'app' folder where main.py resides in your local folder
+> uvicorn main:app --reload    [It runs the uvicorn server at port 8000]
+> In browser type http://localhost:8000/docs (FastAPI Swagger)
