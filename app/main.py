@@ -4,9 +4,9 @@
 # Run Uvicorn - uvicorn main:app --reload
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from services import service
+from .services import service
 import requests
 import os
 
@@ -15,6 +15,7 @@ load_dotenv()
 app = FastAPI()
 ORDER_BASE_URL = os.getenv('ORDER_BASE_URL')
 PRODUCT_BASE_URL = os.getenv('PRODUCT_BASE_URL')
+print(ORDER_BASE_URL, PRODUCT_BASE_URL)
 
 
 class User(BaseModel):
@@ -108,7 +109,9 @@ def create_order(user_id: int, orderObj: Order ):
 @app.get('/products', status_code=200)
 def get_all_products():
     try:
-        response = requests.get(f"{ORDER_BASE_URL}/products")
+        response = requests.get(f"{PRODUCT_BASE_URL}/")
+        print(response)
+        print(response.content)
         if response.status_code != 200:
             return HTTPException(status_code=response.status_code, detail=response.content)
         else:

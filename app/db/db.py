@@ -10,9 +10,9 @@ PASSWORD = os.getenv('DB_PASSWORD')
 
 conn = pymysql.connect(
     database="customer",
-    user="customer_admin",
-    password="customer_admin",
-    host="customer.cqe6hr1jmhxb.ap-south-1.rds.amazonaws.com",
+    user=USER,
+    password=PASSWORD,
+    host=HOST,
     port=3306
 )
 
